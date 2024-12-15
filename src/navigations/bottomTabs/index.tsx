@@ -19,7 +19,10 @@ export const BottomTabs = () => {
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarIcon: ({ focused }) => <HomeBottomTabIcon isFocused={focused} />
+          tabBarIcon: ({ focused }) => (
+            <HomeBottomTabIcon isFocused={focused} />
+          ),
+          headerShown: false
         }}
       />
       <BottomTab.Screen
