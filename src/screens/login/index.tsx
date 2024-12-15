@@ -4,14 +4,23 @@ import { ConnectMeIcon } from '../../../assets/icons/Logo';
 import { TextInput, Button } from 'react-native-paper';
 import { useAtom } from 'jotai';
 import { isAuthorized } from '../../atoms/Authorizations';
+import { isLoaderVisible } from '../../atoms/Loader';
 
 export const LoginScreen = () => {
   // atom
   const [, setAuthorized] = useAtom(isAuthorized);
+  const [, setIsVisible] = useAtom(isLoaderVisible);
 
   // local states
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const handleLogin = () => {
+    setAuthorized(true);
+    setIsVisible(true);
+
+    setTimeout(() => setIsVisible(false), 3000);
+  };
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -47,7 +56,7 @@ export const LoginScreen = () => {
             style={styles.input}
             mode="outlined"
           />
-          <Button mode="contained" onPress={() => setAuthorized(true)}>
+          <Button mode="contained" onPress={handleLogin}>
             Login
           </Button>
         </View>

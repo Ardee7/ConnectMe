@@ -7,6 +7,7 @@ import { LoginScreen } from './screens/login';
 import { useAtom } from 'jotai';
 import { isAuthorized } from './atoms/Authorizations';
 import { navigationTheme } from './styles/theme';
+import { LoaderScreen } from './components/loader';
 
 const Stack = createStackNavigator();
 
@@ -15,6 +16,7 @@ export default function NavContainer(): ReactElement {
 
   return (
     <NavigationContainer theme={navigationTheme}>
+      <LoaderScreen />
       <Stack.Navigator>
         {authorized ? (
           <Stack.Screen
